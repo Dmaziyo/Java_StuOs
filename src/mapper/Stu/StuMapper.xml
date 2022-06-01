@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Stu.StuMapper">
+    <select id="getAllStudent" resultType="data.Student">
+        select * from student
+    </select>
+    <select id="getStudentByid" parameterType="int" resultType="data.Student">
+    select * from student where id = #{id}
+    </select>
+    <select id="getStudentByName" parameterType="String" resultType="data.Student">
+    select * from student where name LIKE  #{name}
+    </select>
+    <select id="getStudentByGender" parameterType="String" resultType="data.Student">
+    select * from student where gender = #{gender}
+    </select>
+    <select id="getStudentByNumber" parameterType="String" resultType="data.Student">
+    select * from student where number LIKE  #{number}
+    </select>
+    <select id="getStudentByAge" parameterType="String" resultType="data.Student">
+    select * from student where age =  #{age}
+    </select>
+    <insert id="addStudent" parameterType="data.Student">
+    insert into student(name, gender,number,age ) values(#{name}, #{gender},#{number},#{age})
+    </insert>
+    <delete id="deleteStu" parameterType="int" statementType="PREPARED" timeout="20">
+        delete from student where id=#{id}
+    </delete>
+    <update id="updateStu" >
+    update student
+    set name = #{name}, gender=#{gender} ,number=#{number} ,age=#{age}
+    where id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Course.CourseMapper">
+    <select id="getAllCourse" resultType="data.Course">
+        select * from course
+    </select>
+    <select id="getCourseById" parameterType="int" resultType="data.Course">
+    select * from course where id = #{id}
+    </select>
+    <select id="getCourseByNum" parameterType="String" resultType="data.Course">
+    select * from course where courseNum LIKE  #{courseNum}
+    </select>
+    <select id="getCourseByName" parameterType="String" resultType="data.Course">
+    select * from course where courseName LIKE #{courseName}
+    </select>
+    <select id="getCourseByHour" parameterType="String" resultType="data.Course">
+    select * from course where courseHour LIKE  #{courseHour}
+    </select>
+    <select id="getCourseByType" parameterType="String" resultType="data.Course">
+    select * from course where coursetype LIKE  #{coursetype}
+    </select>
+    <select id="getCourseByTeacher" parameterType="String" resultType="data.Course">
+    select * from course where teacher LIKE  #{teacher}
+    </select>
+    <insert id="addCourse" parameterType="data.Course">
+    insert into course(courseNum, courseName,courseHour,courseType ,teacher) values(#{courseNum}, #{courseName},#{courseHour},#{courseType} ,#{teacher})
+    </insert>
+    <delete id="deleteCourse" parameterType="int" statementType="PREPARED" timeout="20">
+        delete from course where id=#{id}
+    </delete>
+    <update id="updateCourse" >
+    update course
+    set courseNum = #{courseNum}, courseName=#{courseName} ,courseHour=#{courseHour} ,courseType=#{courseType},teacher=#{teacher}
+    where id = #{id}
+    </update>
+</mapper>
