@@ -1,6 +1,5 @@
 package views.ScoreView;
 
-import utils.CourseUtils.CourseManage;
 import utils.ScoreUtils.ScoreManage;
 import utils.base.Mytable;
 
@@ -14,21 +13,19 @@ public class SSearchView extends JDialog{
     private Mytable table;
     private JComboBox select_type;
     private JTextField search_text;
-    private ScoreForm courseForm;
+    private ScoreForm scoreForm;
     public SSearchView(JFrame jFrame, ScoreManage scoreManage, Mytable table, ScoreForm courseForm){
         super(jFrame,"查询课程",true);
         this.scoreManage = scoreManage;
         this.table=table;
-        this.courseForm=courseForm;
+        this.scoreForm =courseForm;
         JPanel jPanel=new JPanel();
         JLabel type=new JLabel("请选择查询方式");
          select_type=new JComboBox();
         select_type.addItem("--请选择--");
-        select_type.addItem("课程编号");
-        select_type.addItem("课程类型");
-        select_type.addItem("课时");
         select_type.addItem("课程名称");
-        select_type.addItem("老师");
+        select_type.addItem("课程类型");
+        select_type.addItem("成绩");
         search_text=new JTextField(15);
         JButton search_btn=new JButton("查询");
         jPanel.add(type);
@@ -41,7 +38,7 @@ public class SSearchView extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 String filterType=(String)select_type.getSelectedItem();
                 String filterText=search_text.getText();
-                courseForm.refreshFilter(filterType,filterText);
+                scoreForm.refreshFilter(filterType,filterText);
             }
         });
 
