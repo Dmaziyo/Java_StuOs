@@ -15,8 +15,8 @@ public interface ScoreMapper {
     ArrayList<Score> getAllScore(int s_id);
 //    搜索数据
 //    Course getScoreById(int id);
-    @Select("select sc.id, sc.s_id, sc.c_id,stu.name, cr.courseName,cr.courseType,sc.score FROM score sc  " +
-            "INNER JOIN student stu ON stu.id=sc.s_id" +
+    @Select("select sc.id, sc.s_id, sc.c_id,stu.name, cr.courseName,cr.courseType,sc.score FROM score sc \n" +
+            "INNER JOIN student stu ON stu.id=sc.s_id\n" +
             "INNER JOIN course cr   ON cr.id = sc.c_id WHERE sc.s_id=#{s_id} AND courseName LIKE #{courseName}")
     ArrayList<Score> getScoreByName(@Param("s_id") int s_id,@Param("courseName") String courseName);
     @Select("select sc.id, sc.s_id, sc.c_id,stu.name, cr.courseName,cr.courseType,sc.score FROM score sc \n " +
@@ -25,7 +25,7 @@ public interface ScoreMapper {
     ArrayList<Score> getScoreByScore(@Param("s_id") int s_id,@Param("score") String score);
     @Select("select sc.id, sc.s_id, sc.c_id,stu.name, cr.courseName,cr.courseType,sc.score FROM score sc \n " +
             "INNER JOIN student stu ON stu.id=sc.s_id\n" +
-            "INNER JOIN course cr   ON cr.id = sc.c_id WHERE sc.s_id=#{s_id} AND cr.courseType LIKE #{courseType}")
+            "INNER JOIN course cr   ON cr.id = sc.c_id WHERE sc.s_id=#{s_id} AND cr.courseType LIKE #{courseType}\n")
     ArrayList<Score> getScoreByType(@Param("s_id") int s_id,@Param("courseType") String courseType);
     //    添加数据
     @Insert("INSERT INTO score(s_id, c_id,score) values(#{s_id}, #{c_id},#{score})")

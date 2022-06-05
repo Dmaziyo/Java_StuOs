@@ -62,8 +62,8 @@ public class ScoreHandler implements ActionListener {
             return;
         }
 
-        int id=CourseForm.courses.get(rowIndexes[0]).getId();
-        scoreManage.deleteCourse(id);
+        int id=ScoreForm.scores.get(rowIndexes[0]).getId();
+        scoreManage.deleteScore(id);
         tableForm.refreshAll();
     }
 

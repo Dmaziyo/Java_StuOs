@@ -2,6 +2,7 @@ package views.FormView;
 
 import utils.base.Mytable;
 import utils.FormUtils.StudentManage;
+import views.ScoreView.SSearchView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,8 +39,13 @@ public class SearchView extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 String filterType=(String)select_type.getSelectedItem();
                 String filterText=search_text.getText();
+                if(filterText.isEmpty()||filterText.isEmpty()){
+                    JOptionPane.showMessageDialog(null,"信息不能为空","警告",JOptionPane.WARNING_MESSAGE);
+                }
+                else{
+                    tableForm.refreshFilter(filterType,filterText);
+                }
 
-                tableForm.refreshFilter(filterType,filterText);
             }
         });
 

@@ -14,11 +14,11 @@ public class SSearchView extends JDialog{
     private JComboBox select_type;
     private JTextField search_text;
     private ScoreForm scoreForm;
-    public SSearchView(JFrame jFrame, ScoreManage scoreManage, Mytable table, ScoreForm courseForm){
+    public SSearchView(JFrame jFrame, ScoreManage scoreManage, Mytable table, ScoreForm scoreForm){
         super(jFrame,"查询课程",true);
         this.scoreManage = scoreManage;
         this.table=table;
-        this.scoreForm =courseForm;
+        this.scoreForm =scoreForm;
         JPanel jPanel=new JPanel();
         JLabel type=new JLabel("请选择查询方式");
          select_type=new JComboBox();
@@ -38,7 +38,12 @@ public class SSearchView extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 String filterType=(String)select_type.getSelectedItem();
                 String filterText=search_text.getText();
-                scoreForm.refreshFilter(filterType,filterText);
+               if(filterText.isEmpty()||filterText.isEmpty()){
+                   JOptionPane.showMessageDialog(null,"信息不能为空","警告",JOptionPane.WARNING_MESSAGE);
+               }
+               else{
+                   SSearchView.this.scoreForm.refreshFilter(filterType,filterText);
+               }
             }
         });
 

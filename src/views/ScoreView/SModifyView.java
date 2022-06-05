@@ -36,7 +36,7 @@ public class SModifyView extends JDialog {
 
                 Score mscore=ScoreForm.scores.get(index);
                 mscore.setScore(score);
-                scoreManage.modifyCourse(mscore);
+                scoreManage.modifyScore(mscore);
                 scoreForm.refreshAll();
                 JOptionPane.showMessageDialog(null,"修改成功","成功",JOptionPane.INFORMATION_MESSAGE);
             }

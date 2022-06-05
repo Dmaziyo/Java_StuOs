@@ -63,7 +63,7 @@ public class ScoreManage {
     }
 
     //      删除数据
-    public void deleteCourse(int index) {
+    public void deleteScore(int index) {
         try (SqlSession session = MybatisUtil.getSession(true)){
             scoreMapper =session.getMapper(ScoreMapper.class);
             scoreMapper.deleteScore(index);
@@ -71,7 +71,7 @@ public class ScoreManage {
     }
 
     //    修改数据
-    public void modifyCourse(Score score) {
+    public void modifyScore(Score score) {
         try (SqlSession session = MybatisUtil.getSession(true)){
             scoreMapper =session.getMapper(ScoreMapper.class);
             scoreMapper.updateScore(score);

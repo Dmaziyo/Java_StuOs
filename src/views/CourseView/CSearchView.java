@@ -40,7 +40,12 @@ public class CSearchView extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 String filterType=(String)select_type.getSelectedItem();
                 String filterText=search_text.getText();
-                courseForm.refreshFilter(filterType,filterText);
+                if(filterText.isEmpty()||filterText.isEmpty()){
+                    JOptionPane.showMessageDialog(null,"信息不能为空","警告",JOptionPane.WARNING_MESSAGE);
+                }
+                else{
+                    courseForm.refreshFilter(filterType,filterText);
+                }
             }
         });
 

@@ -76,7 +76,7 @@ public class SAddView extends JDialog {
 
         Container contentPane=getContentPane();
         contentPane.add(jPanel);
-        setSize(300,600);
+        setSize(300,280);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);

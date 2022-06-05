@@ -49,13 +49,20 @@ public class Login extends JPanel {
             password.setFont(new Font("黑体",1,13));
             //账号密码框
             JTextField usef=new JTextField(15);
-            JTextField pwdf=new JTextField(15);
+            JPasswordField pwdf=new JPasswordField(15);
 
             JButton login_btn=new JButton("登录");
             login_btn.setUI((new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue)));
 
             login_btn.addActionListener(new LoginListener(usef,pwdf,cards));
             JButton reset=new JButton("重置");
+            reset.addActionListener(new ActionListener() {
+                  @Override
+                  public void actionPerformed(ActionEvent e) {
+                        usef.setText("");
+                        pwdf.setText("");
+                  }
+            });
             reset.setUI((new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.red)));
             //账号密码面板添加
             userpanel.add(user);
@@ -93,9 +100,14 @@ public class Login extends JPanel {
 
                       jFrame.setJMenuBar( new MyMenuBar(handler));
                 }
-                else{
+                else if (user.getText().isEmpty()&&password.getText().isEmpty()){
+                      System.out.println("登录失败");
+                      JOptionPane.showMessageDialog(null,"账号或密码不能为空","警告",JOptionPane.WARNING_MESSAGE);
+                }
+                else {
                       System.out.println("登录失败");
                       JOptionPane.showMessageDialog(null,"账号或密码错误","警告",JOptionPane.WARNING_MESSAGE);
+
                 }
           }
     }

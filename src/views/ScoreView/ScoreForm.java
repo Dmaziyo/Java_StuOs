@@ -68,7 +68,7 @@ public class ScoreForm extends JFrame{
     public void init() {
         DefaultTableModel tableModel=(DefaultTableModel)table.getModel();
         tableModel.setRowCount(0);
-        tableModel.setColumnIdentifiers(new Object[]{"学生姓名","课程名称","成绩"});
+        tableModel.setColumnIdentifiers(new Object[]{"课程名称","课程类型","成绩"});
         this.refreshAll();
         table.setRowHeight(30);
         table.setModel(tableModel);
