@@ -30,7 +30,6 @@ public class CourseManage {
 
     }
     public void getCourseByNum(String num) {
-
         num="%" + num + "%";
         try (SqlSession session = MybatisUtil.getSession(true)){
             courseMapper =session.getMapper(CourseMapper.class);
